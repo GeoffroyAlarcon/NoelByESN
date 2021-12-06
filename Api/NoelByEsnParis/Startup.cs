@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using NoelByEsnParis.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace NoelByEsnParis
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<MySQLConnector>(_ => new MySQLConnector(Configuration["ConnectionStrings:MySqlDatabase"])); ;
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
