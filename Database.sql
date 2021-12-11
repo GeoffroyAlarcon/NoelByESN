@@ -1,10 +1,11 @@
 drop schema if exists  SecretSantaByESN; 
 create schema SecretSantaByESN DEFAULT CHARACTER SET utf8;
 use SecretSantaByESN; 
-create table user(
+create table personne(
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 nom VARCHAR(250) NOT null,
-prenom VARCHAR(250)
+prenom VARCHAR(250) not null,
+estEnCouple tinyint default 0
 )
 ENGINE = InnoDB 
 DEFAULT CHARACTER SET = utf8;

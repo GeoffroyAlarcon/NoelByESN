@@ -12,10 +12,9 @@ namespace NoelByEsnParis.Context
         {
             Connection = new MySqlConnection(connectionString);
         }
-        public MySqlConnection Connection { get;set }
+        public MySqlConnection Connection { get; set; }
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
     }
 }

@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace NoelByEsnParis.Repository.Interface
 {
-    interface IPersonRepository
+ public   interface IPersonRepository
     {
-        public Person AddPerson(Person person);
-        public List<Person> GetAllParticipants();
+        public void AddPerson(Person person);
+        public List<Person> GetAllPeople();
+        public void UpdatePerson(Person person);
+        public void DeletePerson(Person person);
+        public Person GetPersonById(int personId);
+        public void PersonIsEngaged(int personId);
     }
 }
