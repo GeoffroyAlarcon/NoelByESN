@@ -17,14 +17,15 @@ namespace NoelByEsnParis.Controllers
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Route("/addperson")]
         public IActionResult AddPerson([FromBody] Person person)
-        {
-         _personService.AddPerson(person);
-            return Ok("ajout du participant dans la base");
+        {var result = _personService.AddPerson(person);
+            return Ok(result);
         }
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Route("/getAllPerson")]
         public IActionResult GetAllPerson()
         {
@@ -32,20 +33,22 @@ namespace NoelByEsnParis.Controllers
             return Ok(result);
         }
         [HttpDelete]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [Route("/deleteperson")]
-        public IActionResult DeletePerson([FromBody] Person person)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Route("/deleteperson/{personId}")]
+        public IActionResult DeletePerson(int personId)
         {
-            _personService.DeletePerson(person);
-            return Ok("supression du participant dans la base");
+           var result = _personService.DeletePerson(personId);
+            return Ok(result);
         }
         [HttpPut]
-        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Route("/updateperson")]
         public IActionResult UpdatePerson([FromBody] Person person)
         {
-            _personService.UpdatePerson(person);
-            return Ok("modification du participant dans la base");
+           var result= _personService.UpdatePerson(person);
+            return Ok(result);
         }
     }
 

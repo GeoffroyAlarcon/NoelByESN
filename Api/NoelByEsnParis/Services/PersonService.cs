@@ -31,24 +31,27 @@ namespace NoelByEsnParis.Services
             }
             return result;
         }
-        public void AddPerson(Person person)
+        public bool AddPerson(Person person)
         {
-            _personRepository.AddPerson(person);
-          
+        var result =   _personRepository.AddPerson(person);
+            return result;
         }
         public List<Person> GetAllPeople()
         {
-            return _personRepository.GetAllPeople();
+            var result = _personRepository.GetAllPeople();
+            return result;
         }
 
-        public void UpdatePerson(Person person)
+        public bool UpdatePerson(Person person)
         {
-            _personRepository.UpdatePerson(person);
+           var result = _personRepository.UpdatePerson(person);
+            return result;
         }
 
-        public void DeletePerson(Person person)
+        public bool  DeletePerson(int personId)
         {
-            _personRepository.DeletePerson(person);
+         var result =   _personRepository.DeletePerson(personId);
+            return result;
         }
     }
 }

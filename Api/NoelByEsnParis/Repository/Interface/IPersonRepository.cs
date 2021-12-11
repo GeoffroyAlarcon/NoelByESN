@@ -8,11 +8,11 @@ namespace NoelByEsnParis.Repository.Interface
 {
  public   interface IPersonRepository
     {
-        public void AddPerson(Person person);
+        public bool AddPerson(Person person);
         public List<Person> GetAllPeople();
-        public void UpdatePerson(Person person);
-        public void DeletePerson(Person person);
+        public  bool UpdatePerson(Person person);
+        public bool DeletePerson(int personID);
         public Person GetPersonById(int personId);
-        public void PersonIsEngaged(int personId);
+        public bool PersonIsEngaged(int personId);
     }
 }

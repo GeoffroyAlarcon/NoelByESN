@@ -8,9 +8,9 @@ namespace NoelByEsnParis.Services.Interfaces
 {
    public interface IPersonService
     {
-        public void AddPerson(Person person);
+        public bool AddPerson(Person person);
         public List<Person> GetAllPeople();
-        public void UpdatePerson(Person person);
-        public void DeletePerson(Person person);
+        public bool UpdatePerson(Person person);
+        public bool DeletePerson(int personId);
     }
 }
