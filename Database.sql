@@ -13,8 +13,8 @@ CREATE TABLE pair_people (
 id int PRIMARY KEY  NOT NULL AUTO_INCREMENT,
 firstPersonId int NOT NULL,
 secondPersonId int not null,
-CONSTRAINT fk_firstPersonId FOREIGN KEY (firstPersonId) REFERENCES user(id) ON DELETE CASCADE,
-CONSTRAINT fk_SecondPersonId FOREIGN KEY (secondPersonId) REFERENCES user(id) ON DELETE CASCADE
+CONSTRAINT fk_firstPersonId FOREIGN KEY (firstPersonId) REFERENCES personne(id) ON DELETE CASCADE,
+CONSTRAINT fk_SecondPersonId FOREIGN KEY (secondPersonId) REFERENCES personne(id) ON DELETE CASCADE
 )
 ENGINE = InnoDB 
 DEFAULT CHARACTER SET = utf8;
