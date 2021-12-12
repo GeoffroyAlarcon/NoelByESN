@@ -35,9 +35,9 @@ namespace NoelByEsnParis.Repository
         public bool DeletePerson(int personId)
         {
             DB.Connection.Open();
-            string query = "delete from personne where id = @id && estEnCouple != 1";
+            string query = "delete from personne where id = @id and estEnCouple != 1";
             MySqlCommand cmd = DB.Connection.CreateCommand();
-            cmd.Parameters.AddWithValue("@nom", personId);
+            cmd.Parameters.AddWithValue("@id", personId);
             cmd.CommandText = query;
             int rowAffected = cmd.ExecuteNonQuery();
             DB.Connection.Close();
@@ -71,7 +71,7 @@ namespace NoelByEsnParis.Repository
         public Person GetPersonById(int personId)
         {
             DB.Connection.Open();
-            string query = "select nom,id, prenom, estEnCouple from personne where id = @id";
+            string query = "select nom, prenom, estEnCouple from personne where id = @id";
             using var cmd = DB.Connection.CreateCommand();
             cmd.CommandText= query;
             cmd.Parameters.AddWithValue("@id", personId);
@@ -79,7 +79,7 @@ namespace NoelByEsnParis.Repository
             Person person = new Person();
             while (myReader.Read())
             {
-                person.Id=  (int)myReader["id"];
+                person.Id= personId;
                 person.FirstName = myReader["prenom"].ToString();
                 person.LastName= myReader["nom"].ToString();
                 person.IsEngaged =(bool)myReader["estEnCouple"];
@@ -93,8 +93,7 @@ namespace NoelByEsnParis.Repository
             DB.Connection.Open();
             string query = "update personne set estEnCouple = 1 where id = @id ";
             MySqlCommand cmd = DB.Connection.CreateCommand();
-            cmd.Parameters.AddWithValue("@id", personId);
-
+            cmd.Parameters.AddWithValue("@id",personId);
             cmd.CommandText = query;
             int rowAffected = cmd.ExecuteNonQuery();
             DB.Connection.Close();
@@ -109,7 +108,7 @@ namespace NoelByEsnParis.Repository
             MySqlCommand cmd = DB.Connection.CreateCommand();
             cmd.Parameters.AddWithValue("@nom", person.LastName);
             cmd.Parameters.AddWithValue("@prenom", person.FirstName);
-            cmd.Parameters.AddWithValue("@id", person.FirstName);
+            cmd.Parameters.AddWithValue("@id", person.Id);
 
             cmd.CommandText = query;
             int rowAffected = cmd.ExecuteNonQuery();

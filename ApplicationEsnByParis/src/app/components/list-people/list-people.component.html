@@ -1,6 +1,38 @@
-<div class="row">
-  <app-nav id="nav" class="bg-success col-3"></app-nav>
-  <div class="col-9">
-    <p>list-people works!</p>
+<div class="row" id="box_row">
+  <app-nav id="nav" class="bg-success col-2"></app-nav>
+  <div class="col-10">
+  <h1 class="text-center py-5"> liste des participants </h1>
+<div  id="{{elt.id}}" *ngFor="let elt of people"> 
+  <div  *ngIf=" modeUpdateInt != elt.id; then thenBlock else elseBlock" >  </div>
+<ng-template #thenBlock >
+  <div class="row py-1">
+  <div class="col-3 offset-1 " id="{{'firstName_' + elt.id}}"> {{elt.firstName}}</div>
+  <div class="col-3 offset-1" id="{{'lastName_' + elt.id}}">    {{elt.lastName}}</div>
+  <div class="col-1 edit_div">
+    <img class="img-fluid edit"  src="../../../assets/image/edit-solid.svg" alt="iconModifier" (click)="modeUpdate(elt.id)"> 
+  </div>
+  <div class="col-1 trash_div" >
+    <img class="img-fluid trash"  *ngIf="elt.isEngaged != true" src="../../../assets/image/trash-solid.svg" alt="poubelle pour supprimer un participant" (click)="deletePerson(elt.id)"> 
+  </div>
+</div>
+</ng-template>
+<ng-template #elseBlock>
+  <form  #f="ngForm" class="row py-2" (ngSubmit)="updatePerson(f)">
+  <div class="col-3">  <input id="firstName" placeholder="firstName"  [(ngModel)]="elt.firstName"  name="firstName" type="text"  ngModel required> </div> 
+  <div class="col-3 offset-1"> <input id="lastName" placeholder="lastName" [(ngModel)]="elt.lastName" name="lastName" type="text" ngModel required> </div>
+ <input name="id" hidden [(ngModel)]="elt.id" ngModel>
+  <div class="col-2 offset-2"><button type="submit" class="btn btn-success" [disabled]="f.invalid"> modifier </button> </div>
+</form>
+.</ng-template>
+
+
+
+</div>
+<form class="row  py-2" [formGroup]="personForm" (ngSubmit)="addPerson()">
+  <div class="col-3 offset-1"> <input id="firstName" placeholder="nom" class="form-control" name="firstName" type="text" formControlName="firstName"> </div>
+  <div class="col-3  offset-1"> <input id="lastName" class="form-control" placeholder="prénom" name="lastName" type="text" formControlName="lastName"> </div>
+  <div class="col-1 text-center"> <button type="submit" class="btn btn-success" [disabled]="personForm.invalid">ajouter</button> </div>
+</form>
+
   </div>
 </div>

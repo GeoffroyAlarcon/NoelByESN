@@ -9,7 +9,7 @@ namespace NoelByEsnParis.Models
     {
         public PersonCoupleWish() { }
       public  int Id { get; set; }
-        public Person firstPerson { get; set; }
+        public Person FirstPerson { get; set; }
        public Person SecondPerson { get; set; }
     }
 }

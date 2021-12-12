@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GenarateCouplesComponent } from './genarate-couples.component';
+import { ListPeopleGiftComponent } from './list-people-gift.component';
 
-describe('GenarateCouplesComponent', () => {
-  let component: GenarateCouplesComponent;
-  let fixture: ComponentFixture<GenarateCouplesComponent>;
+describe('ListPeopleGiftComponent', () => {
+  let component: ListPeopleGiftComponent;
+  let fixture: ComponentFixture<ListPeopleGiftComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GenarateCouplesComponent ]
+      declarations: [ ListPeopleGiftComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GenarateCouplesComponent);
+    fixture = TestBed.createComponent(ListPeopleGiftComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

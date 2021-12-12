@@ -84,6 +84,8 @@ namespace NoelByEsnParis
         {
             services.AddTransient<IPersonRepository, PersonRepository>();
             services.AddTransient<IPersonService, PersonService>();
+            services.AddTransient<IPersonCoupleWishRepository, PersonCoupleWishRepository>();
+            services.AddTransient<IPersonCoupleWishService, PersonCoupleWishService>();
         }
     }
 
